@@ -160,9 +160,9 @@ class _BluetoothState extends State<Bluetooth> {
   Widget buildBluetoothDevice(BuildContext context, NetworkB e) {
     return InkWell(
       onTap: () {
-        SharedPreferencesUtils.getInstance().set(btName, e.texttitle);
-        selectedBluetooth = e.texttitle;
-        Navigator.pop(context, e.texttitle);
+        SharedPreferencesUtils.getInstance().set(btName, e.textTitle);
+        selectedBluetooth = e.textTitle;
+        Navigator.pop(context, e.textTitle);
       },
       child: Column(
         children: [
@@ -172,7 +172,7 @@ class _BluetoothState extends State<Bluetooth> {
               children: [
                 Container(
                   padding: EdgeInsets.only(left: 5),
-                    child: e.texttitle == selectedBluetooth
+                    child: e.textTitle == selectedBluetooth
                         ? const Icon(
                       Icons.check,
                       color: Colors.blue,
@@ -186,10 +186,10 @@ class _BluetoothState extends State<Bluetooth> {
                   width: 5,
                 ),*/
                 Text(
-                  e.texttitle,
+                  e.textTitle,
                   style: TextStyle(
                       fontSize: 15,
-                      color: e.texttitle == selectedBluetooth
+                      color: e.textTitle == selectedBluetooth
                           ? Colors.blue
                           : Colors.grey.shade100),
                 ),

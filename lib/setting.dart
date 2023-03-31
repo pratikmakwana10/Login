@@ -16,7 +16,7 @@ class Setting extends StatefulWidget {
 }
 
 class _SettingState extends State<Setting> {
-  bool _value = true;
+  bool _value = false;
 
   List<FunctionModel> functionList = [
     FunctionModel(

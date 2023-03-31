@@ -22,9 +22,9 @@ class _SignUpState extends State<SignUp> {
               children: [
                 Align(
                     alignment: Alignment.centerRight,
-                    child: Container(
-                      child: Image.asset('images/delete.png'),
+                    child: SizedBox(
                       height: 20,
+                      child: Image.asset('images/delete.png'),
                     ) /*: IconButton(
                       onPressed: () {},
                       icon: const Icon(
@@ -46,14 +46,14 @@ class _SignUpState extends State<SignUp> {
                   ),
                   // style: TextStyle(fontSize: 30, fontWeight: FontWeight.w200),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 15,
                 ),
                 const Text(
                   "Email",
                   style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 5,
                 ),
                 const TextField(
@@ -64,14 +64,14 @@ class _SignUpState extends State<SignUp> {
                         borderSide: BorderSide(color: Colors.blue),
                       )),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
                 const Text(
                   "Password",
                   style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 5,
                 ),
                 const TextField(
@@ -90,7 +90,7 @@ class _SignUpState extends State<SignUp> {
                     ),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 50,
                 ),
                 ElevatedButton(
@@ -105,7 +105,7 @@ class _SignUpState extends State<SignUp> {
                     style: TextStyle(fontSize: 22),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
                 Row(
@@ -117,7 +117,7 @@ class _SignUpState extends State<SignUp> {
                       width: MediaQuery.of(context).size.width / 4,
                       color: Colors.grey.shade400,
                     ),
-                    SizedBox(
+                    const SizedBox(
                       width: 20,
                     ),
                     Text(
@@ -128,7 +128,7 @@ class _SignUpState extends State<SignUp> {
                         color: Colors.grey.shade300,
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       width: 20,
                     ),
                     Container(
@@ -138,7 +138,7 @@ class _SignUpState extends State<SignUp> {
                     ),
                   ],
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
                 Container(
@@ -204,11 +204,11 @@ class _SignUpState extends State<SignUp> {
                     ],
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 30,
                 ),
-                Center(
-                  child: const Text(
+                const Center(
+                  child: Text(
                     "By using Contact Backup you agree to the",
                     style: TextStyle(fontSize: 17, color: Colors.grey),
                   ),
@@ -236,7 +236,7 @@ class _SignUpState extends State<SignUp> {
                     ),
                   ],
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 30,
                 ),
                 Row(

@@ -1,4 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:login_signup_page/src/fonts.dart';
 import 'package:login_signup_page/forgot_password.dart';
@@ -25,11 +26,13 @@ class _LoginPageState extends State<LoginPage> {
   bool _isLogin = true;
 
   googleLogin() async {
-    print("googleLogin method Called");
-    GoogleSignIn _googleSignIn = GoogleSignIn();
-    var result;
+    if (kDebugMode) {
+      print("google Login method Called");
+    }
+    GoogleSignIn googleSignIn = GoogleSignIn();
+    GoogleSignInAccount? result;
     try {
-       result = await _googleSignIn.signIn();
+       result = await googleSignIn.signIn();
       if (result == null) {
         return;
       }
@@ -69,7 +72,7 @@ class _LoginPageState extends State<LoginPage> {
     return Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(
-          physics: AlwaysScrollableScrollPhysics(),
+          physics: const AlwaysScrollableScrollPhysics(),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -294,6 +297,7 @@ class _LoginPageState extends State<LoginPage> {
                     onTap: () async {
                      var result = await googleLogin();
                       // print(result);
+                     // ignore: use_build_context_synchronously
                      await Navigator.push(
                           context,
                           MaterialPageRoute(
@@ -337,7 +341,7 @@ class _LoginPageState extends State<LoginPage> {
                 onTap: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => Purchase()),
+                    MaterialPageRoute(builder: (context) => const Purchase()),
                   );
                 },
                 child: Padding(

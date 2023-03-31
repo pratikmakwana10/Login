@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:login_signup_page/feature_model.dart';
 import 'package:login_signup_page/login_screen.dart';
@@ -25,14 +26,16 @@ class _PurchaseState extends State<Purchase> {
     OfferModel("\$11.99/Monthly", "First 3 days free", false, false),
     OfferModel("\$39.99/Yearly", "First 3 days free", true, true),
   ];
-   List<String> filterList = [];
+  List<String> filterList = [];
+
   //List<int> number = [];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         body: SingleChildScrollView(
-       child: Column(children: [
+      child: Column(
+          children: [
         buildBannerView(context),
         buildContactBackUpRow(),
         buildFeatureList(),
@@ -41,36 +44,33 @@ class _PurchaseState extends State<Purchase> {
         priceListviewBuilder(),
         buildElevatedButton(context),
         buildText(),
-        //buildSizedBox_10(20),
         buildSizedBox_2(),
         buildLastRow(),
         Column(
           children: [
             Container(
-              padding: EdgeInsets.all(10),
-              height: 250,
-              decoration: BoxDecoration(
 
-              ),
+              padding: const EdgeInsets.all(10),
+              height: 250,
+              decoration: const BoxDecoration(),
               child: ListView.builder(
-                //  _AnimatedMovies = AllMovies.where((i) => i.isAnimated).toList();
+                  //  _AnimatedMovies = AllMovies.where((i) => i.isAnimated).toList();
 
                   itemCount: featureList.length,
                   itemBuilder: (BuildContext context, int index) {
                     var con = featureList[index].text.contains("Contacts");
-                      if(con == true){
-                        filterList.add(con.toString());
+                    if (con == true) {
+                      filterList.add(con.toString());
+                      if (kDebugMode) {
                         print(filterList);
-                      }else{
-
                       }
+                    } else {}
                     //print(con);
                     return Container(
-                      padding: EdgeInsets.only(left: 10),
-                      decoration: BoxDecoration(
+                      padding: const EdgeInsets.only(left: 10),
+                      decoration: const BoxDecoration(
                           color: Colors.blueGrey,
-                        borderRadius: BorderRadius.all(Radius.circular(10))
-                      ),
+                          borderRadius: BorderRadius.all(Radius.circular(10))),
                       height: 50,
                       width: double.maxFinite,
                       child: Center(child: Text(featureList[index].text)),
@@ -96,10 +96,9 @@ class _PurchaseState extends State<Purchase> {
 
   }*/
   Container filterContacts(String text, int index) {
-    List<FeatureList> filterList = [];
 
     return Container(
-      padding: EdgeInsets.all(10),
+      padding: const EdgeInsets.all(10),
       height: 50,
       width: double.maxFinite,
       decoration: BoxDecoration(
@@ -109,38 +108,42 @@ class _PurchaseState extends State<Purchase> {
       child: Center(
           child: Text(
         text,
-        style: TextStyle(
+        style: const TextStyle(
             fontSize: 17, fontWeight: FontWeight.bold, color: Colors.white),
       )),
     );
   }
 
-  SizedBox buildSizedBox_2() => SizedBox(
+  SizedBox buildSizedBox_2() => const SizedBox(
         height: 20,
       );
 
-  Column buildFeatureList() {
+  Widget buildFeatureList() {
     /**
      *  Do not call the same method repeatedly for the same view.
      *  Make a list of data and iterate the items in a loop.
      */
-    return Column(
-      children: featureList
-          .map((e) => buildFeaturesRow(
-                e.text,
-                e.image,
-              ))
-          .toList(),
+    return Padding(
+      padding: const EdgeInsets.only(left: 20.0),
+      child: Column(
+
+        children: featureList
+            .map((e) => buildFeaturesRow(
+                  e.text,
+                  e.image,
+                ))
+            .toList(),
+      ),
     );
   }
 
-  SizedBox buildSizedBox() => SizedBox(
+  SizedBox buildSizedBox() => const SizedBox(
         height: 10,
       );
 
   Padding buildContactBackUpRow() {
     return Padding(
-      padding: const EdgeInsets.only(top: 20.0, bottom: 20),
+      padding: const EdgeInsets.only(top: 20.0, bottom: 20,),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
@@ -188,7 +191,7 @@ class _PurchaseState extends State<Purchase> {
           // height: MediaQuery.of(context).size.height / 3,
           width: MediaQuery.of(context).size.width,
           /**
-           *  Using height and Boxfit.fill, the image will get stretched or shrinked depending on the height.
+           *  Using height and Box-fit.fill, the image will get stretched or shark depending on the height.
            */
           child: Image.asset('images/banner.png', fit: BoxFit.fitWidth),
         ),
@@ -202,7 +205,7 @@ class _PurchaseState extends State<Purchase> {
              *  Create separate methods for click events like the one below
              */
             onTap: () {
-              NavigateLogin(context);
+              navigateLogin(context);
             },
             child: Container(
               alignment: Alignment.topRight,
@@ -255,7 +258,7 @@ class _PurchaseState extends State<Purchase> {
         ),
         onPressed: () {
           // filterContact(context,featureList.length);
-          NavigateLogin(context);
+          navigateLogin(context);
         },
         child: const Text(
           "Try free and subscribe",
@@ -293,7 +296,9 @@ class _PurchaseState extends State<Purchase> {
         for (var offer in offerList) {
           if (clickedButton == offer) {
             offer.buttonSelected = true;
-            print(offer.buttonSelected);
+            if (kDebugMode) {
+              print(offer.buttonSelected);
+            }
           } else {
             offer.buttonSelected = false;
           }
@@ -322,7 +327,7 @@ class _PurchaseState extends State<Purchase> {
                       offerItem.dollarRate,
                       style: const TextStyle(fontSize: 15, fontFamily: sfHeavy),
                     ),
-                    Text(
+                    const Text(
                       "First 3 days free",
                       // offerList.subtitle,
                       style: TextStyle(
@@ -350,7 +355,7 @@ class _PurchaseState extends State<Purchase> {
                         " 65% off",
                         style: TextStyle(fontFamily: sfSemiBold),
                       )))
-                  : SizedBox.shrink(),
+                  : const SizedBox.shrink(),
               SizedBox(
                 height: 25,
                 width: 28,
@@ -373,7 +378,7 @@ class _PurchaseState extends State<Purchase> {
   }
 }
 
-void NavigateLogin(BuildContext context) {
+void navigateLogin(BuildContext context) {
   Navigator.pop(
     context,
     MaterialPageRoute(builder: (context) => LoginPage()),

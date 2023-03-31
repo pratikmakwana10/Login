@@ -39,7 +39,7 @@ class Network {
   Network(this.text);
 }
 class NetworkB {
-  String texttitle;
+  String textTitle;
 
-  NetworkB(this.texttitle);
+  NetworkB(this.textTitle);
 }
